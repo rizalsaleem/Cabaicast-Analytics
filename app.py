@@ -1,7 +1,7 @@
 import calendar
 from datetime import date, datetime
 from pathlib import Path
-
+import pytz
 import numpy as np
 import pandas as pd
 import joblib
@@ -1220,12 +1220,17 @@ with st.sidebar:
     )
 
 # ── Header ────────────────────────────────────────────────────────────────────
-now     = datetime.now()
+wib = pytz.timezone('Asia/Jakarta')
+now = datetime.now(wib)
+
 _hari   = {0:"Senin",1:"Selasa",2:"Rabu",3:"Kamis",4:"Jumat",5:"Sabtu",6:"Minggu"}
 _bulan  = {1:"Jan",2:"Feb",3:"Mar",4:"Apr",5:"Mei",6:"Jun",
            7:"Jul",8:"Agu",9:"Sep",10:"Okt",11:"Nov",12:"Des"}
+
+# Format tanggal
 tgl_str = f"{_hari[now.weekday()]}, {now.day} {_bulan[now.month]} {now.year}"
-tgl_str = f"{_hari[now.weekday()]}, {now.day} {_bulan[now.month]} {now.year}"
+
+# Sapaan berdasarkan jam WIB
 if now.hour < 11:
     sapaan = "Selamat Pagi"
 elif now.hour < 15:
