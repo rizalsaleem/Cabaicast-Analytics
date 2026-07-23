@@ -120,22 +120,27 @@ def inject_css():
     transition: margin-left 0.35s ease, width 0.35s ease, transform 0.35s ease !important;
 }}
 
-[data-testid="stIconMaterial"] {{
-    color: {t['text']} !important;
+/* ── Fade blur di tepi atas/bawah sidebar saat scroll ── */
+[data-testid="stSidebar"] > div:first-child {{
+    position: relative;
 }}
-[data-testid="stSidebar"] [data-testid="stIconMaterial"] {{
-    color: {t['sb_text']} !important;
+[data-testid="stSidebar"]::before {{
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 40px;
+    background: linear-gradient(to bottom, {t['sidebar']} 0%, transparent 100%);
+    pointer-events: none;
+    z-index: 10;
 }}
-[data-testid="stIconMaterial"] {{
-    opacity: 1 !important;
-    visibility: visible !important;
-}}
-[data-testid="collapsedControl"] {{
-    opacity: 1 !important;
-    visibility: visible !important;
-}}
-header[data-testid="stHeader"] button {{
-    opacity: 1 !important;
+[data-testid="stSidebar"]::after {{
+    content: "";
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 40px;
+    background: linear-gradient(to top, {t['sidebar']} 0%, transparent 100%);
+    pointer-events: none;
+    z-index: 10;
 }}
 
 /* Nav radio → pill menu */
