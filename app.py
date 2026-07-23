@@ -322,8 +322,9 @@ div[data-testid="stDownloadButton"] > button:focus {{
     background-color: {t['inp_bg']} !important;
     border: none !important;
 }}
-.stTextInput input, .stNumberInput input {{
-    color: {t['text']} !important;
+.stTextInput input, .stNumberInput input,
+.stSelectbox input, .stDateInput input {{
+    color: var(--text-color) !important;
     background-color: transparent !important;
 }}
 .stTextInput input::placeholder {{
